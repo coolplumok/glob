@@ -32,7 +32,7 @@ animate();
 // SECTION Initializing core ThreeJS elements
 function init() {
   // Initialize renderer
-  renderer = new WebGLRenderer({ antialias: true });
+  renderer = new WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   // renderer.outputEncoding = THREE.sRGBEncoding;
@@ -67,7 +67,7 @@ function init() {
   scene.add(camera);
 
   // Additional effects
-  scene.fog = new Fog(0x535ef3, 400, 2000);
+  // scene.fog = new Fog(0x535ef3, 400, 2000);
 
   // Helpers
   // const axesHelper = new AxesHelper(800);
@@ -82,17 +82,17 @@ function init() {
   controls.enableDamping = true;
   controls.dynamicDampingFactor = 0.01;
   controls.enablePan = false;
-  controls.minDistance = 200;
+  controls.minDistance = 500;
   controls.maxDistance = 500;
   controls.rotateSpeed = 0.8;
   controls.zoomSpeed = 1;
-  controls.autoRotate = false;
+  controls.autoRotate = true;
 
   controls.minPolarAngle = Math.PI / 3.5;
   controls.maxPolarAngle = Math.PI - Math.PI / 3;
 
-  window.addEventListener("resize", onWindowResize, false);
-  document.addEventListener("mousemove", onMouseMove);
+  // window.addEventListener("resize", onWindowResize, false);
+  // document.addEventListener("mousemove", onMouseMove);
 }
 
 // SECTION Globe
@@ -147,8 +147,8 @@ function initGlobe() {
   Globe.rotateY(-Math.PI * (5 / 9));
   Globe.rotateZ(-Math.PI / 6);
   const globeMaterial = Globe.globeMaterial();
-  globeMaterial.color = new Color(0x3a228a);
-  globeMaterial.emissive = new Color(0x220038);
+  globeMaterial.color = new Color(0x0a3972);
+  globeMaterial.emissive = new Color(0x0a3972);
   globeMaterial.emissiveIntensity = 0.1;
   globeMaterial.shininess = 0.7;
   // NOTE Cool stuff

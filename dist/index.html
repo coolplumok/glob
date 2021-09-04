@@ -5,14 +5,30 @@
     <title>Pandemic Globe</title>
     <style>
       body {
-        margin: 0;
+        margin: 0;        
       }
       canvas {
         display: block;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <script src="./main.js"></script>
+    <script>
+      var ratio = $("canvas").outerHeight() / $("canvas").outerWidth();
+      function resize(){   
+        var width = $(window).width()-$("canvas").offset().left- Math.abs($("canvas").outerWidth(true) - $("canvas").outerWidth()); 
+        $("canvas").outerWidth(width);
+        $("canvas").outerHeight(ratio*width);
+        
+      }
+      $(document).ready(function(){
+        resize();
+        $(window).on("resize", function(){                      
+            resize();
+        });
+      });
+      </script>
   </body>
 </html>
